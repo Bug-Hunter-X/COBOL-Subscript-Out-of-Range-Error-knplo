@@ -1,0 +1,17 @@
+01  WS-AREA. 
+    05  WS-COUNT PIC 9(5) VALUE 0. 
+    05  WS-TABLE OCCURS 100 TIMES. 
+       10  WS-ITEM PIC X(50). 
+
+PROCEDURE DIVISION.
+    PERFORM VARYING WS-COUNT FROM 1 BY 1 UNTIL WS-COUNT > 100 
+       MOVE 'Value ' & WS-COUNT TO WS-TABLE(WS-COUNT) 
+    END-PERFORM.
+
+    IF WS-COUNT <= 100 THEN 
+       DISPLAY 'Access Table element: ' WS-TABLE(WS-COUNT) 
+    ELSE 
+       DISPLAY 'Index out of bounds' 
+    END-IF
+
+    STOP RUN.
